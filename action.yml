@@ -5,6 +5,9 @@ inputs:
   image-ref:  # id of input
     description: 'name of built container image'
     required: true
+  repo_token:
+    description: 'Github repo token'
+    required: true
 #  pat: 
 #    description: 'PAT'
 #    required: true
@@ -32,6 +35,6 @@ runs:
     - name: upload Trivy results to annotaions
       uses: yuzutech/annotations-action@v0.3.0
       with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          repo-token: "${{ inputs.repo_token }}"
           title: 'Trivy Results'
           input: './trivyparsedresults.json'
